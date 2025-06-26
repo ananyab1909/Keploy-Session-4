@@ -1,0 +1,13 @@
+curl -X POST http://localhost:8080/users \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Ananya Biswas", "email":"ananyabiswas@example.com"}'
+
+curl -X GET http://localhost:8080/users
+
+curl -X PUT http://localhost:8080/users \
+  -H "Content-Type: application/json" \
+  -d '{"id":"<user-id>", "name":"Ananya Dey", "email":"ananyadey@example.com"}'
+
+curl -X DELETE http://localhost:8080/users \
+  -H "Content-Type: application/json" \
+  -d '{"id":"<user-id>"}'
