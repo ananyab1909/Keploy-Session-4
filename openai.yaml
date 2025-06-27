@@ -1,12 +1,11 @@
 openapi: 3.0.3
 info:
-  title: User Management API
-  description: RESTful API to manage users using Go and PostgreSQL.
+  title: Keploy Session API
+  description: REST API for managing users with Create, Read, Update, and Delete operations.
   version: 1.0.0
 
 servers:
-  - url: http://localhost:8080
-    description: Local server
+  - url: https://keploy-session-2-1.onrender.com
 
 paths:
   /users:
@@ -17,22 +16,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewUser'
+              $ref: '#/components/schemas/UserInput'
       responses:
         '200':
-          description: User created successfully
+          description: Successfully created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        '500':
-          description: Internal server error
 
     get:
       summary: Get all users
       responses:
         '200':
-          description: A list of users
+          description: List of users
           content:
             application/json:
               schema:
@@ -41,7 +38,7 @@ paths:
                   $ref: '#/components/schemas/User'
 
     put:
-      summary: Update an existing user
+      summary: Update a user
       requestBody:
         required: true
         content:
@@ -50,7 +47,7 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '200':
-          description: User updated successfully
+          description: User updated
           content:
             application/json:
               schema:
@@ -72,9 +69,9 @@ paths:
                   format: uuid
       responses:
         '204':
-          description: User deleted successfully
+          description: User deleted
         '404':
-          description: User not found or could not be deleted
+          description: User not found
 
 components:
   schemas:
@@ -89,12 +86,8 @@ components:
         email:
           type: string
           format: email
-      required:
-        - id
-        - name
-        - email
 
-    NewUser:
+    UserInput:
       type: object
       properties:
         name:
