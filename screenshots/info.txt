@@ -1,0 +1,17 @@
+📄 Test Reports and CI/CD Configuration
+
+This directory contains all the necessary files related to testing and continuous integration for the Keploy Session API project.
+
+Contents:
+---------
+1. 🌐 API Tests (Keploy)
+   - Location: ./keploy-tests/
+   - Description: API test cases recorded or generated using Keploy CLI.
+   - Includes tests for various input edge cases, validation failures, and multiple CRUD flows.
+
+2. 🔄 CI/CD Workflow File
+   - Location: .github/workflows/ci.yml
+   - Description: GitHub Actions pipeline to automate building, running tests, and executing the Keploy Test Suite.
+   - Trigger: On push to the main branch.
+
+
