@@ -1,0 +1,41 @@
+name: CI Pipeline for Keploy Session API
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Go
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.21
+
+      # Step 3: Install dependencies
+      - name: Install Go modules
+        run: go mod tidy
+
+      # Step 4: Start Go backend
+      - name: Start backend server
+        run: |
+          nohup go run main.go &
+          sleep 5  # Allow server to start
+
+      # Step 5: Install Keploy CLI
+      - name: Install Keploy CLI
+        run: |
+          curl --silent -L https://keploy.io/ent/install.sh | bash
+
+      # Step 6: Run Keploy Test Suite
+      - name: Run Keploy Test Suite
+        run: |
+          export KEPLOY_API_KEY=${{ secrets.KEPLOY_API_KEY }}
+          keploy test-suite --app=468bcea0-0ae6-4371-bf5f-fbce8919e564 --base-path https://keploy-session-2-2.onrender.com --cloud
