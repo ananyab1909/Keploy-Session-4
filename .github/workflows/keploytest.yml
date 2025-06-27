@@ -36,6 +36,7 @@ jobs:
 
       # Step 6: Run Keploy Test Suite
       - name: Run Keploy Test Suite
+        env:
+          KEPLOY_API_KEY: ${{ secrets.KEPLOY_API_KEY }}  
         run: |
-          export KEPLOY_API_KEY=${{ secrets.KEPLOY_API_KEY }}
           keploy test-suite --app=468bcea0-0ae6-4371-bf5f-fbce8919e564 --base-path https://keploy-session-2-2.onrender.com --cloud
