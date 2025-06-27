@@ -37,8 +37,9 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
 
+  /users/update:
     put:
-      summary: Update a user
+      summary: Update an existing user
       requestBody:
         required: true
         content:
@@ -47,7 +48,7 @@ paths:
               $ref: '#/components/schemas/User'
       responses:
         '200':
-          description: User updated
+          description: User updated successfully
           content:
             application/json:
               schema:
@@ -55,8 +56,9 @@ paths:
         '404':
           description: User not found
 
+  /users/delete:
     delete:
-      summary: Delete a user
+      summary: Delete a user by ID
       requestBody:
         required: true
         content:
@@ -67,11 +69,13 @@ paths:
                 id:
                   type: string
                   format: uuid
+              required:
+                - id
       responses:
         '204':
-          description: User deleted
+          description: User deleted successfully
         '404':
-          description: User not found
+          description: User not found or could not be deleted
 
 components:
   schemas:
@@ -86,6 +90,10 @@ components:
         email:
           type: string
           format: email
+      required:
+        - id
+        - name
+        - email
 
     UserInput:
       type: object
