@@ -25,7 +25,7 @@ Key features include:
      cd Keploy-Session-4
      ```
 
-3. Obtain `Keploy Secret API`. Follow the [documentation](@https://keploy.io/docs/running-keploy/api-testing-cicd/)
+3. Obtain `Keploy Secret API`. Follow the [documentation](https://keploy.io/docs/running-keploy/api-testing-cicd/)
 
 4. Generate test cases, and integrate CI/CD using GitHub Workflows.
 
