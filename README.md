@@ -29,6 +29,10 @@ Key features include:
 
 4. Generate test cases, and integrate CI/CD using GitHub Workflows.
 
+## Deployment
+
+The repository is deployed using [Render](https://keploy-session-2-2.onrender.com)
+
 ## Testing Screenshots
 
 The files are present in the screenshots directory
